@@ -10,7 +10,14 @@ import { GithubClientService } from '../github-client.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private _githubService:GithubClientService) { }
+  constructor(private _githubService:GithubClientService) {
+    this._githubService.fncGetMyProfile()
+        .subscribe(
+          user=>{
+            console.log(user)
+          }
+        )
+   }
 
   ngOnInit() {
   }
