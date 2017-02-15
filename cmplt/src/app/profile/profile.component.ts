@@ -11,6 +11,7 @@ import { GithubClientService } from '../github-client.service';
 export class ProfileComponent implements OnInit {
 user=['']
 repos=['']
+username:string
   constructor(private _githubService:GithubClientService) {
     this._githubService.fncGetMyProfile()
         .subscribe(
@@ -27,7 +28,20 @@ repos=['']
           }
         )
    }
+   searchUser(){
+     console.log('works')
+     this._githubService.updateUser(this.username);
+       
+       this._githubService.fncGetMyProfile().subscribe(user => {
+            //console.log(user);
+            this.user = user;
+        })
+        
+        this._githubService.fncGetMyProfileRepos().subscribe(repos => {
+            this.repos = repos;
+        })
 
+   }
   ngOnInit() {
   }
 
