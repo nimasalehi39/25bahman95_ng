@@ -19,5 +19,9 @@ export class GithubClientService {
     return this._http.get('http://api.github.com/users/'+this._myId)
                      .map(res=>res.json()) 
   }
+  fncGetMyProfileRepos(){
+    return this._http.get('http://api.github.com/users/'+this._myId+'/repos')
+                     .map(res=>res.json()) 
+  }
 
 }
